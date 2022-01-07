@@ -1,11 +1,14 @@
 import './App.css';
-import { navBar } from "./components/navBar/navBar"
-function App() {
-  return (
-    <div className="App"> Tienda Ailin Ojeda</div>
+import { NavBar } from './components/navBar/NavBar';
+import { Title } from './components/title/title';
 
+export const App = () =>{
+  return (
+    <div className="App">
+      <NavBar />
+      <Title />
+    </div>
   
   );
 }
-
-export default App;
+export default App
