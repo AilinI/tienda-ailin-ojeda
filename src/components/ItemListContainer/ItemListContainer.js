@@ -1,8 +1,8 @@
-function ItemListContainer() {
-    console.log(ItemListContainer)
+function ItemListContainer(props) {
+    console.log(props)
     return (
         
-        <p>PÁGINA DE INICIO</p>
+        <p>{props.greeting}</p>
     )
     
 }

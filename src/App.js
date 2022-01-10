@@ -8,7 +8,7 @@ export const App = () =>{
     <div className="App">
       <Title />
       <NavBar />
-      <ItemListContainer />
+      <ItemListContainer greeting="Holis" />
     </div>
   
   );
