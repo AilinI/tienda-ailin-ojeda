@@ -1,0 +1,42 @@
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 240px;
+    background-color: #fafafa;
+    border-radius: 16px;
+    gap: 12px;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 20px;
+    background-color: bisque;
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .image {
+    height: 120px;
+  }
+  
+  .data {
+    display: flex;
+  }
+  
+  .price,
+  .rating {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: bisque;
+    margin: 8px;
+    font-size: 15px;
+    color: black;
+  }
+  
+  .description,
+  .category {
+    font-size: 16px;
+    margin: 10px;
+  }

@@ -1,0 +1,18 @@
+
+.products,
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
+}
+
+.titleSection {
+  width: 100%;
+  color: aliceblue;
+  font-size: 20px;
+}
+
+.image {
+  width: 100px;
+}

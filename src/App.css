@@ -1,6 +1,10 @@
 .App {
   text-align: center;
   justify-content: center;
+  font-family: 'Teko', sans-serif;
+  background: #cfdcde;
+  background: linear-gradient(0deg, #cfdcde 3%, #ababab);
+  
 }
 
 
