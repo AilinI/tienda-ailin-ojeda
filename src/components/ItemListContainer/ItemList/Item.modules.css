@@ -33,6 +33,7 @@
     margin: 8px;
     font-size: 15px;
     color: black;
+    justify-content: center;
   }
   
   .description,

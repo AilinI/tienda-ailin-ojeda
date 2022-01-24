@@ -2,9 +2,10 @@ import './App.css';
 import { NavBar } from './components/navBar/NavBar';
 import { Title } from './components/title/title';
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import {BrowserRouter as Router, Switch, Route, Link } from "react-router-dom" 
+import {BrowserRouter as Router, Switch, Route,} from "react-router-dom" 
 import Contact from './components/contact/Contact';
 import Landing from './components/Landing/Landing';
+import { Product } from './components/ItemListContainer/ItemDetail/Product';
 
 
 export const App = () =>{
@@ -17,8 +18,11 @@ export const App = () =>{
           <Route exact path="/">
             <Landing />
           </Route>
-          <Route path="/products">
-          <ItemListContainer greeting="HOLIS" />
+          <Route path="/itemList">
+          <ItemListContainer/>
+          </Route>
+          <Route path="/product/:productId">
+            <Product />
           </Route>
           <Route  path="/contact">
           <Contact />

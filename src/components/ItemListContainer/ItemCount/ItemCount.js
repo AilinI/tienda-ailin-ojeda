@@ -31,20 +31,5 @@ const ItemCount = ({stock, initial}) => {
       <button onClick={onAdd}>Agregar al carrito</button>
       </div>
     );
-
-//     const addOne = () => {
-//         const addResult = count + 1;
-//         if (addResult<= initial)
-//         setCount ({addResult})
-//     };
-    
-//     return(
-//         <div>
-//         <button onClick={addOne}>Contador</button>
-//         <h3>{count}</h3>
-//         </div>
-//     )
-
-// }
     }
 export default ItemCount

@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Items from "./Item.js";
+import React, { Fragment, useEffect, useState } from "react";
 import "./ItemList.modules.css"
+import { Link } from "react-router-dom";
+
+
+
 const ItemList = () =>{
     const [items, setItems] = useState();
 
@@ -14,16 +17,25 @@ const ItemList = () =>{
   }, []);
 
   return (
-    <div className="container">
-        <section className="products">
+    <div>
+        <section  className="products">
           <h1 className="titleSection">TIENDA</h1>
-          {items ? (
-            items.map((items) => <Items {...items} />)
-          ) : (
-            <p>Cargando productos...</p>
-          )}
+          {items ?(
+            <Fragment>
+            {items.map((items) => (
+              <div className="item" key={items.id}>
+                  <h2 className="title">{items.title}</h2>
+                  <img className="image" src={items.image} alt="Imagen del producto"/>
+                  <span className="data">
+                    <p className="price">${items.price}</p>
+                  </span>
+                <Link to={`/product/${items.id}`}> Ver más</Link>
+              </div>
+            ))}
+            </Fragment>
+          ): (<p> Cargando Productos </p>) 
+          }
         </section>
-      )
     </div>
   );
 };

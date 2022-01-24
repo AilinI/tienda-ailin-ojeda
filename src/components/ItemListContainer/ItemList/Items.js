@@ -1,10 +1,11 @@
 import "./Item.modules.css"
-export const Item = ({
+export const Items = ({
     category,
     description,
     image,
     price,
     title,
+    id,
 }) => {
     return(
         <section className="section">
@@ -21,5 +22,5 @@ export const Item = ({
     )
     };
 
-export default Item
+export default Items
  
