@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { Fragment } from "react/cjs/react.production.min"
 import ItemCount from '../ItemCount/ItemCount';
 import "../ItemList/Item.modules.css"
 
@@ -28,7 +27,7 @@ export const Product = () => {
 return(
     <div>
         { product ? (
-            <Fragment>
+        <section>
             <h1>{product.title}</h1>
             <img src={product.image} className="image" alt="Imagen del Producto"></img>
             <p>{product.description}</p>
@@ -36,7 +35,7 @@ return(
                     <p className="price">${product.price}</p>
                   </span>
                   <ItemCount initial={0} stock={5}/>
-         </Fragment>
+         </section>
         ):
         (
             <p>Cargando Producto...</p>

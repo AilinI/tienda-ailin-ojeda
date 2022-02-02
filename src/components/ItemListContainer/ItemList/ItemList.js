@@ -29,7 +29,7 @@ const ItemList = () =>{
                   <span className="data">
                     <p className="price">${items.price}</p>
                   </span>
-                <Link to={`/product/${items.id}`}> Ver más</Link>
+                <Link to={`/product/${items.id}`}> Ver detalles </Link>
               </div>
             ))}
             </Fragment>
