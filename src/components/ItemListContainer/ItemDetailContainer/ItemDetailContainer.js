@@ -5,7 +5,7 @@ import "../ItemList/Item.modules.css"
 
 
 
-export const Product = () => {
+export const ItemDetailContainer = () => {
     const {productId} = useParams()
     const [product, setProduct] = useState()
 

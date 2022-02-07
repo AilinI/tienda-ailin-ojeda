@@ -5,7 +5,8 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import {BrowserRouter as Router, Switch, Route,} from "react-router-dom" 
 import Contact from './components/contact/Contact';
 import Landing from './components/Landing/Landing';
-import { Product } from './components/ItemListContainer/ItemDetail/ItemDetail';
+import { ItemDetailContainer } from './components/ItemListContainer/ItemDetailContainer/ItemDetailContainer';
+import ItemList from './components/ItemListContainer/ItemListContainer';
 
 
 export const App = () =>{
@@ -19,10 +20,11 @@ export const App = () =>{
             <Landing />
           </Route>
           <Route path="/itemList">
-            <ItemListContainer/>
+            <ItemListContainer />
           </Route>
           <Route path="/product/:productId">
-            <Product />
+          <ItemList /> 
+            <ItemDetailContainer />
           </Route>
           <Route  path="/contact">
             <Contact />
