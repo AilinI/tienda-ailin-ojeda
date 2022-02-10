@@ -17,7 +17,13 @@ export const NavBar = () => {
             <NavLink activeClassName="activeLink" className="navTitle" exact to="/contact">
                 CONTACTO
             </NavLink>
+            <span className="inline">
+            <NavLink activeClassName="activeLink" exact to="/cart" >
                 <CartWidget className="carritoNav" />
+            </NavLink>
+            {/* numero de items que se agregan al acrrito */}
+            <p>N!</p>
+            </span>
         </div>
     </nav>
     )

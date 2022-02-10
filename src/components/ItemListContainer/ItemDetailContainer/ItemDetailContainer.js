@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, Fragment } from "react"
 import { useParams } from "react-router-dom"
-import ItemCount from '../ItemCount/ItemCount';
 import "../ItemList/Item.modules.css"
+import ItemDetail from "./ItemDetail"
 
 
 
 export const ItemDetailContainer = () => {
     const {productId} = useParams()
     const [product, setProduct] = useState()
+
 
     useEffect(() => {
         const getProduct = async () =>{
@@ -20,25 +21,18 @@ export const ItemDetailContainer = () => {
         } catch(error) {
             console.log(error)
         }
-    }
+        }
     getProduct()
-}, [])
+    }, [productId])
+
 
 return(
-    <div>
-        { product ? (
-        <section>
-            <h1>{product.title}</h1>
-            <img src={product.image} className="image" alt="Imagen del Producto"></img>
-            <p>{product.description}</p>
-                <span className="data">
-                    <p className="price">${product.price}</p>
-                  </span>
-                  <ItemCount initial={0} stock={5}/>
-         </section>
-        ):
-        (
-            <p>Cargando Producto...</p>
-        )}
-    </div>
-)}
+
+        <Fragment>
+        <h2>ItemDetailContainer</h2>
+        <div className="ItemDetailContainer">
+          <ItemDetail product={product} />
+        </div>
+      </Fragment>
+)
+}

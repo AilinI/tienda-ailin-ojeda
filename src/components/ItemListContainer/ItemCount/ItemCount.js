@@ -1,8 +1,15 @@
-import { useState } from "react"
+import { Fragment, useState } from "react"
 import "./ItemCount.modules.css"
 
-const ItemCount = ({stock, initial}) => {
-    const [count, setCount] = useState(0);
+const ItemCount = ({
+  stock, 
+  initial,
+  count,
+  setCount,
+  showButton,
+  setShowButton,
+}) => {
+    const handleClick = () => setShowButton(false);
 
     const restItem = () => {
         const newValue = count - 1
@@ -15,21 +22,23 @@ const ItemCount = ({stock, initial}) => {
       if (newValue <= stock)
           setCount(newValue)
     };
-  
+
+    // CREO QUE TENGO QUE CAMBIAR ESTA FUNCION PARA QUE EL ON ADD ME MANDE LOS ITEMS AL CART
+    // TENDRIA QUE CAMBIAR LA ALERTA POR LA FUNCION?
     const onAdd = () => {
-      const message =`Agregaste al carrito ${count} producto`
+      const message =`Agregaste al carrito ${count} producto`;
+      handleClick();
       count === 1 ? alert(message) : alert(`${message}s`);
     };
-  
     return (
-      <div>
+      <Fragment>
       <div className="container">
-        <button onClick={restItem} className="item">- 1</button>
+        <button onClick={restItem} className="item"> - </button>
         <span className="item" >{count}</span>
-        <button onClick={sumItem} className="item">+ 1</button>
+        <button onClick={sumItem} className="item"> + </button>
       </div>
       <button onClick={onAdd}>Agregar al carrito</button>
-      </div>
+      </Fragment>
     );
     }
 export default ItemCount

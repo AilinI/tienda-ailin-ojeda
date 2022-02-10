@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Switch, Route,} from "react-router-dom"
 import Contact from './components/contact/Contact';
 import Landing from './components/Landing/Landing';
 import { ItemDetailContainer } from './components/ItemListContainer/ItemDetailContainer/ItemDetailContainer';
-import ItemList from './components/ItemListContainer/ItemListContainer';
+import Cart from './components/cart/Cart';
 
 
 export const App = () =>{
@@ -20,14 +20,16 @@ export const App = () =>{
             <Landing />
           </Route>
           <Route path="/itemList">
-            <ItemListContainer />
+            <ItemListContainer stock={15} initial={0}/>
           </Route>
           <Route path="/product/:productId">
-          <ItemList /> 
             <ItemDetailContainer />
           </Route>
           <Route  path="/contact">
             <Contact />
+          </Route>
+          <Route  path="/cart">
+            <Cart />
           </Route>
         </Switch>
       </div>

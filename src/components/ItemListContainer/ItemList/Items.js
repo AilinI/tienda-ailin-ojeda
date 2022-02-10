@@ -1,4 +1,6 @@
 import "./Item.modules.css"
+// import React, { useEffect, useState } from "react";
+
 export const Items = ({
     category,
     description,
@@ -7,17 +9,19 @@ export const Items = ({
     title,
     id,
 }) => {
+
+
     return(
-        <section className="section">
-        <div className="item">
-            <h2 className="title">{title}</h2>
-            <img className="image" src={image} alt="Imagen del producto"/>
-            <span className="data">
-                <p className="price">${price}</p>
-            </span>
-            <p className="description">{description}</p>
-            <p className="category">{category}</p>
-        </div>
+        <section className="item">
+            <Link className="" key={id} to={`/product/${id}`}>
+      <div className="image">
+        <img alt={title} src={image}></img>
+      </div>
+      <div className="">
+        <p className="price">${price}</p>
+        <p className="title">{title}</p>
+      </div>
+    </Link>
         </section>
     )
     };
