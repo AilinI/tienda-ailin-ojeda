@@ -1,31 +1,39 @@
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../../context/cartContex";
 
 const ItemDetail = ({ product }) => {
   const [count, setCount] = useState(1);
   const [showButton, setShowButton] = useState(true);
+  const { addItem } = useContext(CartContext)
 
-  return (
+  const handleClick = () => setShowButton(false)
+
+  const onAdd = () => {
+    addItem(product, count);
+    handleClick();
+  }
+    return (
     <div>
       <h1>ItemDetail</h1>
       <div>
         {product ? (
           <div className="ItemDetail" key={product.id}>
-            <div className="ItemDetail--division1">
+            <div className="">
               <img
-                className="ItemDetail--img"
+                className=""
                 alt={product.title}
                 src={product.image}
               ></img>
             </div>
-            <div className="ItemDetail--division2">
-              <h1 className="ItemDetail--title">{product.title}</h1>
-              <div className="ItemDetail--description">
+            <div className="">
+              <h1 className="">{product.title}</h1>
+              <div className="">
                 Descripcion del Producto: {product.description}
               </div>
-              <p className="ItemDetail--price">Precio: ${product.price}</p>
-              <p className="ItemDetail--rate">
+              <p className="">Precio: ${product.price}</p>
+              <p className="">
                 {product.rating.rate} Clasificacion
               </p>
               <p>Cantidad: {count}</p>
@@ -37,12 +45,13 @@ const ItemDetail = ({ product }) => {
                   setCount={setCount}
                   showButton={showButton}
                   setShowButton={setShowButton}
+                  onAdd={onAdd}
                 />
               )}
-              <Link className="ItemDetail--buttonBuy" to="/cart">
+              <Link className="" to="/cart">
                 Comprar Ahora
               </Link>
-              <Link className="ItemDetail--Link" to="../itemList">
+              <Link className="" to="../itemList">
                 Volver a Catalogo
               </Link>
             </div>

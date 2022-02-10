@@ -5,13 +5,16 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import {BrowserRouter as Router, Switch, Route,} from "react-router-dom" 
 import Contact from './components/contact/Contact';
 import Landing from './components/Landing/Landing';
-import { ItemDetailContainer } from './components/ItemListContainer/ItemDetailContainer/ItemDetailContainer';
 import Cart from './components/cart/Cart';
+import {CartProvider} from "./context/cartContex"
+import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 
 
 export const App = () =>{
-  return (
-    <Router>
+    
+    return (
+        <CartProvider>
+        <Router>
       <div className="App">
         <Title />
         <NavBar />
@@ -31,9 +34,10 @@ export const App = () =>{
           <Route  path="/cart">
             <Cart />
           </Route>
-        </Switch>
-      </div>
-    </Router>
+          </Switch>
+          </div>
+          </Router>
+          </CartProvider>
   );
 }
 export default App

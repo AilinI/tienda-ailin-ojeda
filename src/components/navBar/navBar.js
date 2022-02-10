@@ -1,5 +1,5 @@
 import "./navBar.modules.css"
-import { CartWidget } from './CartWidget';
+import {CartWidget} from "./CartWidget"
 import { NavLink } from "react-router-dom"
 
 export const NavBar = () => {
@@ -19,7 +19,7 @@ export const NavBar = () => {
             </NavLink>
             <span className="inline">
             <NavLink activeClassName="activeLink" exact to="/cart" >
-                <CartWidget className="carritoNav" />
+                <CartWidget />
             </NavLink>
             {/* numero de items que se agregan al acrrito */}
             <p>N!</p>

@@ -1,33 +1,54 @@
 import React from "react"
-import ItemCount from "../ItemListContainer/ItemCount/ItemCount"
-import { useState } from "react"
-// import { TYPES } from "./CartActions";
+import { useContext } from "react"
+import { CartContext } from "../../context/cartContex";
+import { Link } from "react-router-dom";
 
-const Cart =(CartItem) =>{
-    const [cartItems ,setCartItems] = useState([]);
-    console.log(cartItems);
-
-    const handleCartItems = (product) => {
-        setCartItems(product)
-    }
-
-
-    return(
-        <div>
-        <h2>ESTE ES EL CARRITO</h2>
-        <h3>Productos seleccionados</h3>
-        <h3>
-            Acá debería estar el mapeo de los items seleccionados
-            {/* {Items.map((Items) => <Items key={Items.id} data={Items}  /> )} */}
-        </h3>
-        {CartItem.lenght === 0 && (<div>El carrito está vacío</div>) }
-        {/* Boton para remover todos los item del carrito */}
-
-        <button>
-            Vaciar carrito
-        </button>
+const Cart = () => {
+    const { cartItems, removeItem, clear, total } = useContext(CartContext);
+    const subTotal = (price, quantity) => {
+      const subTotalPrice = price * quantity;
+      return subTotalPrice.toFixed(2);
+    };
+    return (
+      <>
+        <h1>Estas en Cart</h1>
+        <div className="">
+          <Link className="" to="../itemList">
+            Volver a Catalogo
+          </Link>
         </div>
-    )
-}
+        {cartItems.map((item) => (
+          <div className="cartContain" value={item.id}>
+            <div className="image">
+              <img src={item.image} alt={item.title} />
+            </div>
+            <div className="">
+              <p>{item.title}</p>
+              <p>$ {item.price}</p>
+              <p>Cantidad: {item.quantity}</p>
+            </div>
+            <button
+              onClick={() => removeItem(item.id, item.price, item.quantity)}
+              className=""
+            >
+              Remove
+            </button>
+            <div>${subTotal(item.price, item.quantity)}</div>
+          </div>
+        ))}
+        {total !== 0 ? (
+          <div className="">
+            <button onClick={() => clear()} className="">
+              Remover Todos
+            </button>
+            <div className="">Total: ${total.toFixed(2)} </div>
+            <button className="">Terminar Compra</button>
+          </div>
+        ) : (
+          <p className="">El carrito se encuentra vacio...</p>
+        )}
+      </>
+    );
+  };
 
 export default Cart
