@@ -1,30 +1,32 @@
-import "./navBar.modules.css"
-import {CartWidget} from "./CartWidget"
+import React from "react"
+import "./NavBar.css"
+import CartIcon from "../CartWidget/CartWidget"
 import { NavLink } from "react-router-dom"
 
-export const NavBar = () => {
-    return (
-      
-    <nav className="navBar">
-
-        <div className="titles">
-            <NavLink activeClassName="activeLink" className="navTitle" exact to="/">
-                INICIO
-            </NavLink>
-            <NavLink activeClassName="activeLink" className="navTitle" exact to="/itemList">
-              TIENDA
-            </NavLink>
-            <NavLink activeClassName="activeLink" className="navTitle" exact to="/contact">
-                CONTACTO
-            </NavLink>
-            <span className="inline">
-            <NavLink activeClassName="activeLink" exact to="/cart" >
-                <CartWidget />
-            </NavLink>
-            {/* numero de items que se agregan al acrrito */}
-            <p>N!</p>
-            </span>
-        </div>
+function NavBar() {
+  return (
+    <nav className="nav">
+      <div className="inicio">
+      <NavLink to="/">
+      <img className="logo" src="/assets/img/logo.png" alt="logo" />
+      </NavLink>
+      <NavLink className="nav-link" to="/">
+      Inicio
+      </NavLink>
+      </div>
+      <div className="bar">
+        <NavLink activeClassName="nav-link-active" className="nav-link" to="/productos">
+          Tienda
+        </NavLink>
+        <NavLink className="nav-link" activeClassName="nav-link-active" to="/contacto">
+          Contacto
+        </NavLink>
+      </div>
+      <NavLink activeClassName="nav-link-active" className="cart-widget" to="/cart">
+        <CartIcon />
+      </NavLink>
     </nav>
-    )
+  )
 }
+
+export default NavBar

@@ -1,0 +1,48 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2.5rem;
+  background-color: rgb(243, 113, 26);
+  width: 100%;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  width: 35rem;
+  justify-content: space-between;
+}
+
+.nav-link {
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  font-size: 4rem;
+}
+
+.nav-link-active {
+  background-color: rgb(250, 179, 99);
+  border-radius: 4px;
+  font-weight: bolder;
+}
+
+
+.inicio{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: black;
+  padding-inline: 2rem;
+}
+.logo{
+  width: 7rem;
+}
+
+.cart-widget {
+display: flex;
+flex-direction: column;
+justify-content: center;
+}

@@ -1,38 +1,30 @@
-import { useState, useEffect, Fragment } from "react"
-import { useParams } from "react-router-dom"
-import "../ItemList/Item.modules.css"
-import ItemDetail from "./ItemDetail"
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
+import { db } from '../../firebase/config'
+import { collection, doc, getDoc } from "firebase/firestore"
+import ItemDetail from '../ItemDetail/ItemDetail'
 
+export default function ItemDetailContainer() {
 
+    const [item, setItem] = useState()
 
-export const ItemDetailContainer = () => {
-    const {productId} = useParams()
-    const [product, setProduct] = useState()
-
+    const { itemId } = useParams()
 
     useEffect(() => {
-        const getProduct = async () =>{
-        try {
-            const response = await fetch(
-                `https://fakestoreapi.com/products/${productId}`
+        const productosCollection = collection(db, "productos")
+        const refDoc = doc(productosCollection, itemId)
+        getDoc(refDoc).then(res => {
+            const item = res.data()
+            setItem(
+                <ItemDetail
+                   objeto={item}
+                />
             )
-            const data = await response.json()
-            setProduct(data)
-        } catch(error) {
-            console.log(error)
-        }
-        }
-    getProduct()
-    }, [productId])
+        })
+    }, [itemId])
 
-
-return(
-
-        <Fragment>
-        <h2>ItemDetailContainer</h2>
-        <div className="ItemDetailContainer">
-          <ItemDetail product={product} />
-        </div>
-      </Fragment>
-)
-}
+    return(
+        <>
+            {item}
+        </>
+    )}

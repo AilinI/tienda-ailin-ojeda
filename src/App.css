@@ -1,8 +1,12 @@
-.App {
-  text-align: center;
-  justify-content: center;
-  font-family: 'Teko', sans-serif;
-  background: linear-gradient(0deg, #cfdcde 3%, #ababab);
+
+html {
+  font-size: 63.5%;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
-
+* {
+  font-family: 'Teko', sans-serif;
+}

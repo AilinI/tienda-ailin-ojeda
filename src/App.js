@@ -1,43 +1,32 @@
-import './App.css';
-import { NavBar } from './components/navBar/NavBar';
-import { Title } from './components/title/title';
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import {BrowserRouter as Router, Switch, Route,} from "react-router-dom" 
-import Contact from './components/contact/Contact';
-import Landing from './components/Landing/Landing';
-import Cart from './components/cart/Cart';
-import {CartProvider} from "./context/cartContex"
-import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
-
-
-export const App = () =>{
-    
-    return (
-        <CartProvider>
-        <Router>
-      <div className="App">
-        <Title />
-        <NavBar />
-        <Switch>
-          <Route exact path="/">
-            <Landing />
-          </Route>
-          <Route path="/itemList">
-            <ItemListContainer stock={15} initial={0}/>
-          </Route>
-          <Route path="/product/:productId">
-            <ItemDetailContainer />
-          </Route>
-          <Route  path="/contact">
-            <Contact />
-          </Route>
-          <Route  path="/cart">
-            <Cart />
-          </Route>
-          </Switch>
-          </div>
-          </Router>
-          </CartProvider>
-  );
+import "./App.css"
+import NavBar from "./components/NavBar/NavBar"
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer"
+import ItemList from "./components/ItemList/ItemList"
+import Cart from "./components/Cart/Cart"
+import { CartProvider } from "./context/CartContext"
+import Payment from "./components/Payment/Payment"
+import {BrowserRouter as Router, Routes, Route,} from "react-router-dom" 
+import Contact from "./components/Contact/Contact"
+import LandingPage from "./components/LandingPage/Langing"
+const App = () => {
+  return (
+      <CartProvider>
+      <Router>
+    <div className="App">
+      <NavBar />
+      <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/tienda" element={<ItemList />} />
+      <Route path="/contacto" element={<Contact />} />
+      <Route path="/:categoryId" element={<ItemList />} />
+      <Route path="/item/:itemId" element={<ItemDetailContainer />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/cart/payment" element={<Payment />} />
+      </Routes>
+    </div>
+      </Router>
+    </CartProvider>
+  )
 }
+
 export default App

@@ -1,54 +1,55 @@
 import React from "react"
-import { useContext } from "react"
-import { CartContext } from "../../context/cartContex";
-import { Link } from "react-router-dom";
+import "../Cart/Cart.css"
+import { Link } from "react-router-dom"
+import { useCart } from "../../context/CartContext"
+import OrderForm from "../OrderForm/OrderForm"
 
-const Cart = () => {
-    const { cartItems, removeItem, clear, total } = useContext(CartContext);
-    const subTotal = (price, quantity) => {
-      const subTotalPrice = price * quantity;
-      return subTotalPrice.toFixed(2);
-    };
-    return (
-      <>
-        <h1>Estas en Cart</h1>
-        <div className="">
-          <Link className="" to="../itemList">
-            Volver a Catalogo
+function Cart() {
+  const { removeItem, products, totalItems, totalPrice } = useCart()
+
+  return (
+    <div className="product-block">
+      {products.length > 0 ? 
+        <>
+          {products.map((item) => 
+            <div key={item.id}>
+              <div className="product-container">
+                  <h1>En el carrito</h1>
+                <h2>
+                  {item.title} - {item.quantity} unidades
+                </h2>
+                <div className="total-container">
+                  <h2>${item.price * item.quantity}</h2>
+                </div>
+                  <button
+                    className="del-button"
+                    onClick={() => removeItem(item)}
+                  >
+                    Vaciar
+                  </button>
+              </div>
+            </div>
+          )}
+          <h1>
+            Subtotal: ${totalPrice()} ({totalItems()} unidades)
+          </h1>
+  
+          <div className="form-title">Ingresá tus datos para efectuar el pago.</div>
+
+          <div className="buy-container">
+            <OrderForm />
+          </div>
+        </>
+       : 
+        <>
+          <h3 className="no-items">No hay productos en tu carrito.</h3>
+          <Link to="/">
+            <button className="back-shop">Volver a la tienda</button>
           </Link>
-        </div>
-        {cartItems.map((item) => (
-          <div className="cartContain" value={item.id}>
-            <div className="image">
-              <img src={item.image} alt={item.title} />
-            </div>
-            <div className="">
-              <p>{item.title}</p>
-              <p>$ {item.price}</p>
-              <p>Cantidad: {item.quantity}</p>
-            </div>
-            <button
-              onClick={() => removeItem(item.id, item.price, item.quantity)}
-              className=""
-            >
-              Remove
-            </button>
-            <div>${subTotal(item.price, item.quantity)}</div>
-          </div>
-        ))}
-        {total !== 0 ? (
-          <div className="">
-            <button onClick={() => clear()} className="">
-              Remover Todos
-            </button>
-            <div className="">Total: ${total.toFixed(2)} </div>
-            <button className="">Terminar Compra</button>
-          </div>
-        ) : (
-          <p className="">El carrito se encuentra vacio...</p>
-        )}
-      </>
-    );
-  };
+        </>
+      }
+    </div>
+  )
+}
 
 export default Cart

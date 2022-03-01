@@ -1,0 +1,52 @@
+.img {
+  background-position: center;
+  background-size: cover;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 1rem;
+}
+
+.title {
+  font-size: 2.3rem;
+  text-align: center;
+
+}
+
+.price {
+  font-size: 2.3rem;
+  text-align: center;
+  margin-top: 3rem;
+  font-weight: bold;
+}
+
+.item {
+  padding: 2.3rem;
+  
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 2rem;
+  background-color: rgb(243, 113, 26);
+  border-radius: 8px;
+}
+.button {
+  font-size: 2rem;
+  background-color: rgb(243, 113, 26);
+  color: black;
+  font-weight: bold;
+  border-width: 0;
+  height: 3.5rem;
+}
+
+.title{
+  margin-top: 5rem;
+  height: 5rem;
+  border-radius: 1rem;
+  color: black;
+}
+
+
